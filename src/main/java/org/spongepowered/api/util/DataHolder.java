@@ -25,17 +25,32 @@
 
 package org.spongepowered.api.util;
 
+import com.google.common.base.Optional;
+
 /**
- * An owner may own registrations (of services, et al.).
+ * A data holder object allows the access of additional data on the object
+ * that is not simply expressed by its basic type.
+ *
+ * <p>For example, a chest block, which is of the chest type, also has
+ * inventory. This inventory is considered extra data, which can
+ * be accessed via {@link #getData(Class)}, provided that an implementation
+ * exposes that extra data.</p>
  */
-public interface Owner {
+public interface DataHolder {
 
     /**
-     * An ID for the owner to be used internally. The ID should be unique as to
-     * not conflict with other owners.
+     * Get an instance of the given data class for this block.
      *
-     * @return A unique identifier
+     * <p>For example, if this block represents a sign,
+     * {@code getData(Sign.class)} would yield an instance of
+     * {@code Sign} to change the contents of the sign. However, if
+     * this block does not represent a sign, then an instance will not
+     * be returned.</p>
+     *
+     * @param dataClass The data class
+     * @param <T> The type of data
+     * @return An instance of the class
      */
-    String getId();
+    <T> Optional<T> getData(Class<T> dataClass);
 
 }
