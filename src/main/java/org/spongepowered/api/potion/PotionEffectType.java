@@ -23,35 +23,18 @@
  * THE SOFTWARE.
  */
 
-package org.spongepowered.api.event.player;
-
-import org.spongepowered.api.entity.player.Player;
-import org.spongepowered.api.entity.player.gamemode.GameMode;
-import org.spongepowered.api.util.event.Cancellable;
+package org.spongepowered.api.potion;
 
 /**
- * Called when a {@link Player} changes {@link GameMode}.
+ * Represents a possible type of {@link PotionEffect}.
  */
-public interface PlayerChangeGamemodeEvent extends PlayerEvent, Cancellable {
+public interface PotionEffectType {
 
     /**
-     * Gets the old {@link GameMode} of the player.
+     * Gets whether this potion effect is applied
+     * instantly or over time.
      *
-     * @return The old {@link GameMode}.
+     * @return If applied instantly.
      */
-    GameMode getOldGameMode();
-
-    /**
-     * Gets the new {@link GameMode} of the player.
-     *
-     * @return The new {@link GameMode}.
-     */
-    GameMode getNewGameMode();
-
-    /**
-     * Sets the new {@link GameMode} of the player.
-     *
-     * @param newGameMode The new {@link GameMode} value.
-     */
-    void setNewGameMode(GameMode newGameMode);
+    boolean isInstant();
 }
