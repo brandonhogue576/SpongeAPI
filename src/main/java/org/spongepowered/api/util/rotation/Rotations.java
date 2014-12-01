@@ -22,49 +22,36 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.text.message;
+package org.spongepowered.api.util.rotation;
 
-import org.spongepowered.api.text.translation.Translation;
+import com.google.common.base.Optional;
+
+import java.util.List;
 
 /**
- * Dummy implementation of {@link MessageFactory} - returns null for all
- * methods.
+ * An enumeration of possible rotations for something that can rotate,
+ * such as an {@link org.spongepowered.api.item.inventory.ItemStack} within
+ * an {@link org.spongepowered.api.entity.hanging.ItemFrame}.
  */
-class NullMessageFactory implements MessageFactory {
+public final class Rotations {
+    private Rotations() {
+    }
 
-    @Override
-    public <T> MessageBuilder<T> createBuilder(T content) {
+    public static final Rotation TOP = null;
+    public static final Rotation TOP_RIGHT = null;
+    public static final Rotation RIGHT = null;
+    public static final Rotation BOTTOM_RIGHT = null;
+    public static final Rotation BOTTOM = null;
+    public static final Rotation BOTTOM_LEFT = null;
+    public static final Rotation LEFT = null;
+    public static final Rotation TOP_LEFT = null;
+
+    public static List<Rotation> getValues() {
         return null;
     }
 
-    @Override
-    public MessageBuilder<Translation> createTranslationBuilder(Translation t, Object[] args) {
-        return null;
-    }
-
-    @Override
-    public MessageBuilder<Object> createScoreBuilder(Object score, String override) {
-        return null;
-    }
-
-    @Override
-    public char getColorChar() {
-        return 0;
-    }
-
-    @Override
-    public Message.Text parseLegacyMessage(String message, char color) {
-        return null;
-    }
-
-    @Override
-    public String stripLegacyCodes(String message, char color) {
-        return null;
-    }
-
-    @Override
-    public String replaceLegacyCodes(String message, char from, char to) {
-        return null;
+    public static Optional<Rotation> getRotationForDegree(int degrees) {
+        return Optional.absent();
     }
 
 }

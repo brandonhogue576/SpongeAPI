@@ -22,26 +22,6 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.text.chat;
 
-import com.google.common.base.Optional;
-
-import java.util.List;
-
-/**
- * Dummy implementation of {@link ChatTypeFactory} - returns null for all
- * methods.
- */
-class NullChatTypeFactory implements ChatTypeFactory {
-
-    @Override
-    public Optional<ChatType> getTypeFromName(String name) {
-        return null;
-    }
-
-    @Override
-    public List<ChatType> getTypes() {
-        return null;
-    }
-
-}
+@org.spongepowered.api.util.annotation.NonnullByDefault
+package org.spongepowered.api.util.rotation;

@@ -22,40 +22,22 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.text.format;
+package org.spongepowered.api.util;
 
-import com.google.common.base.Optional;
+public enum AxisDirection {
 
-import java.util.List;
+    PLUS(1),
+    ZERO(0),
+    MINUS(-1);
 
-/**
- * Dummy implementation of {@link TextFormatFactory} - returns null for all
- * methods.
- */
-class NullTextFormatFactory implements TextFormatFactory {
+    private final int signum;
 
-    @Override
-    public Optional<TextColor> getColorFromName(String name) {
-        return null;
+    private AxisDirection(final int signum) {
+        this.signum = signum;
     }
 
-    @Override
-    public List<TextColor> getColors() {
-        return null;
+    public int getSignum() {
+        return signum;
     }
 
-    @Override
-    public Optional<TextStyle> getStyleFromName(String name) {
-        return null;
-    }
-
-    @Override
-    public List<TextStyle> getStyles() {
-        return null;
-    }
-
-    @Override
-    public TextStyle createStyle(TextStyle[] styles) {
-        return null;
-    }
 }

@@ -26,16 +26,18 @@
 package org.spongepowered.api.world;
 
 import com.google.common.base.Optional;
+import org.spongepowered.api.effect.Viewer;
 import org.spongepowered.api.entity.Entity;
 import org.spongepowered.api.math.Vector2i;
 import org.spongepowered.api.world.extent.Extent;
+import org.spongepowered.api.world.weather.WeatherVolume;
 
 import java.util.UUID;
 
 /**
  * A loaded Minecraft world
  */
-public interface World extends Extent {
+public interface World extends Extent, Viewer, WeatherVolume {
 
     /**
      * Gets the unique identifier for this world.
@@ -97,4 +99,5 @@ public interface World extends Extent {
      * @return An entity, if available
      */
     Optional<Entity> getEntityFromUUID(UUID uuid);
+
 }

@@ -22,19 +22,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.text.translation;
-
-import com.google.common.base.Optional;
+package org.spongepowered.api.effect;
 
 /**
- * Dummy implementation of {@link TranslationFactory} - returns null for all
- * methods.
+ * Represents a sound that can be heard on clients.
  */
-class NullTranslationFactory implements TranslationFactory {
+public interface Sound {
 
-    @Override
-    public Optional<Translation> getTranslationFromId(String id) {
-        return null;
-    }
+    /**
+     * Gets the sounds name.
+     *
+     * @return The name of this sound
+     */
+    String getName();
 
 }

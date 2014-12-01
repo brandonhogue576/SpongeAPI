@@ -22,16 +22,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.text.title;
+
+package org.spongepowered.api.world.weather;
 
 /**
- * Dummy implementation of {@link TitleFactory} - returns null for all methods.
+ * All possible {@link Weather}s in vanilla minecraft.
  */
-class NullTitleFactory implements TitleFactory {
+public class Weathers {
 
-    @Override
-    public TitleBuilder createTitleBuilder() {
-        return null;
-    }
-
+    public static final Weather CLEAR = null;
+    public static final Weather RAIN = null;
+    public static final Weather THUNDER_STORM = null;
 }

@@ -22,42 +22,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+package org.spongepowered.api.util.command.source;
 
-package org.spongepowered.api.math;
+import org.spongepowered.api.util.command.CommandSource;
 
 /**
- * Temporary -- needs to be replaced.
+ * Represents a remote source, such as RCON, web-app, etc.
  */
-public class NullPointerExceptionsForAllFactory implements VectorFactory {
-
-    @Override
-    public Vector2d create2d(double x, double y) {
-        return null;
-    }
-
-    @Override
-    public Vector2f create2f(float x, float y) {
-        return null;
-    }
-
-    @Override
-    public Vector2i create2i(int x, int y) {
-        return null;
-    }
-
-    @Override
-    public Vector3d create3d(double x, double y, double z) {
-        return null;
-    }
-
-    @Override
-    public Vector3f create3f(float x, float y, float z) {
-        return null;
-    }
-
-    @Override
-    public Vector3i create3i(int x, int y, int z) {
-        return null;
-    }
+public interface RemoteSource extends CommandSource {
 
 }

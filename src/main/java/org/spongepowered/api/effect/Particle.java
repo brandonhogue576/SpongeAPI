@@ -22,41 +22,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.text.title;
+package org.spongepowered.api.effect;
 
 /**
- * Utility class to create instances of {@link TitleBuilder}.
+ * Represents a particle that can be sent on a Minecraft client.
  */
-public final class Titles {
-
-    private static final TitleFactory factory = null;
-
-    private Titles() {
-    }
+public interface Particle {
 
     /**
-     * Creates a new {@link Title} configuration builder that will reset the
-     * currently displayed Title on the client before displaying the new
-     * configured one.
+     * Gets the particle name.
      *
-     * @return A new {@link TitleBuilder}
-     * @see #update
+     * @return The particle's name
      */
-    public static TitleBuilder builder() {
-        return update().reset();
-    }
-
-    /**
-     * Creates a new empty {@link Title} configuration builder. Unlike
-     * {@link #builder} this won't reset the current Title on the client before
-     * displaying the current one. This has less use cases but should be used if
-     * just the previously sent Title should be updated.
-     *
-     * @return A new {@link TitleBuilder}
-     * @see #builder
-     */
-    public static TitleBuilder update() {
-        return factory.createTitleBuilder();
-    }
+    String getName();
 
 }

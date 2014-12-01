@@ -22,41 +22,47 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.text.title;
+
+package org.spongepowered.api.world.weather;
 
 /**
- * Utility class to create instances of {@link TitleBuilder}.
+ * A volume containing {@link Weather}.
  */
-public final class Titles {
-
-    private static final TitleFactory factory = null;
-
-    private Titles() {
-    }
+public interface WeatherVolume {
 
     /**
-     * Creates a new {@link Title} configuration builder that will reset the
-     * currently displayed Title on the client before displaying the new
-     * configured one.
+     * Gets the current {@link Weather} in this volume.
      *
-     * @return A new {@link TitleBuilder}
-     * @see #update
+     * @return The current weather.
      */
-    public static TitleBuilder builder() {
-        return update().reset();
-    }
+    Weather getWeather();
 
     /**
-     * Creates a new empty {@link Title} configuration builder. Unlike
-     * {@link #builder} this won't reset the current Title on the client before
-     * displaying the current one. This has less use cases but should be used if
-     * just the previously sent Title should be updated.
+     * Gets the remaining duration of the current {@link Weather}.
      *
-     * @return A new {@link TitleBuilder}
-     * @see #builder
+     * @return The remaining weather duration.
      */
-    public static TitleBuilder update() {
-        return factory.createTitleBuilder();
-    }
+    long getRemainingDuration();
 
+    /**
+     * Gets the duration the current {@link Weather} has been running for.
+     *
+     * @return The running weather duration.
+     */
+    long getRunningDuration();
+
+    /**
+     * Sets the {@link Weather} of the volume with a random duration.
+     *
+     * @param weather The new {@link Weather}.
+     */
+    void forecast(Weather weather);
+
+    /**
+     * Sets the {@link Weather} of the volume with the specified duration.
+     *
+     * @param weather The new {@link Weather}.
+     * @param duration The specified duration.
+     */
+    void forecast(Weather weather, long duration);
 }
