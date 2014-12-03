@@ -22,48 +22,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-package org.spongepowered.api.entity.hanging;
+package org.spongepowered.api.service.sql;
 
 import com.google.common.base.Optional;
-import org.spongepowered.api.item.inventory.ItemStack;
-import org.spongepowered.api.util.rotation.Rotation;
 
-import javax.annotation.Nullable;
+import javax.annotation.concurrent.ThreadSafe;
+import javax.sql.DataSource;
+import java.sql.SQLException;
 
 /**
- * Represents an ItemFrame.
+ * This service provides the basics for an abstraction over SQL connections.
+ *
+ * Implementations of this service are expected to be thread-safe
  */
-public interface ItemFrame extends Hanging {
+@ThreadSafe
+public interface SQLService {
+    /**
+     * Returns a data source for the provided JDBC connection string or an alias
+     *
+     * A jdbc connection url is expected to be of the form:
+     * jdbc:&lt;engine&gt;://[&lt;username&gt;[:&lt;password&gt;]@]&lt;host&gt;/&lt;database&gt;
+     *
+     * or an alias (available aliases are known only by the service provider)
+     *
+     * @param jdbcConnection The jdbc url or connection alias
+     * @return A data source providing connections to the given URL.
+     * @throws java.sql.SQLException if a connection to the given database could not be established
+     */
+    public DataSource getDataSource(String jdbcConnection) throws SQLException;
 
     /**
-     * Gets the currently displayed Item.
+     * Returns a possible connection URL for a given alias.
      *
-     * @return The currently displayed item, if available
+     * @param alias The alias to check
+     * @return The connection url as a String if it exists,
+     *          or {@link Optional#absent()}
      */
-    Optional<ItemStack> getItem();
-
-    /**
-     * Sets the item to be displayed.
-     *
-     * @param item The item to be displayed
-     */
-    void setItem(@Nullable ItemStack item);
-
-    /**
-     * Gets the current {@link Rotation} of the {@link ItemStack}
-     * <p>If the itemframe does not have an {@link ItemStack} inside,
-     * the rotation value will be used once an item is placed inside it.</p>
-     *
-     * @return The current item rotation
-     */
-    Rotation getItemRotation();
-
-    /**
-     * Sets the {@link Rotation} of the item hanging in this item frame.
-     * <p>If the itemframe does not have an {@link ItemStack} inside, then
-     * the rotation setting may be ignored.</p>
-     *
-     * @param itemRotation The rotation
-     */
-    void setRotation(Rotation itemRotation);
+    public Optional<String> getConnectionURLFromAlias(String alias);
 }
